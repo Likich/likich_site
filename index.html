@@ -168,6 +168,33 @@
       animation: drift 18s linear infinite;
     }
 
+    .float-field {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .float-line {
+      position: absolute;
+      font-family: "Space Grotesk", monospace;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      color: #ffd86b;
+      opacity: 0.32;
+      mix-blend-mode: screen;
+      white-space: nowrap;
+      animation: floaty var(--t, 16s) ease-in-out infinite;
+      animation-delay: var(--d, 0s);
+      transform: translate(-50%, -50%);
+    }
+
+    @keyframes floaty {
+      0% { transform: translate(-50%, -50%) translate3d(-8px, -10px, 0) rotate(-6deg); }
+      50% { transform: translate(-50%, -50%) translate3d(10px, 12px, 0) rotate(6deg); }
+      100% { transform: translate(-50%, -50%) translate3d(-8px, -10px, 0) rotate(-6deg); }
+    }
+
     @keyframes drift {
       0% { transform: translate3d(-8%, -8%, 0) rotate(-12deg) scale(1.05); }
       50% { transform: translate3d(8%, 8%, 0) rotate(12deg) scale(1.05); }
@@ -877,6 +904,17 @@ ensemble LLMs &gt; open coding &gt; label refinement &gt; human review
 topic models &gt; graphs &gt; debates &gt; concept drift watch
 LLM panels &gt; argue &gt; negotiate &gt; converge?
 remember: keep humans in the loop; document assumptions
+</div>
+
+<div class="float-field">
+  <span class="float-line" style="top: 18%; left: 14%; --d: -2s; --t: 17s;">agent.vote() → agree()</span>
+  <span class="float-line" style="top: 32%; left: 78%; --d: -6s; --t: 19s;">conceptGraph.connect(speaker, theme)</span>
+  <span class="float-line" style="top: 55%; left: 22%; --d: -4s; --t: 18s;">qual_codes |= llm_panel.propose()</span>
+  <span class="float-line" style="top: 68%; left: 66%; --d: -8s; --t: 16s;">bias_check.run()</span>
+  <span class="float-line" style="top: 40%; left: 46%; --d: -10s; --t: 20s;">graph.drift_watch()</span>
+  <span class="float-line" style="top: 12%; left: 58%; --d: -12s; --t: 18s;">humans_in_loop = true</span>
+  <span class="float-line" style="top: 74%; left: 30%; --d: -14s; --t: 19s;">panel.debate("policy")</span>
+  <span class="float-line" style="top: 82%; left: 80%; --d: -16s; --t: 21s;">explain_codes()</span>
 </div>
 
 <header class="nav">

@@ -295,6 +295,33 @@
       animation: drift 18s linear infinite;
     }
 
+    .float-field {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .float-line {
+      position: absolute;
+      font-family: "Space Grotesk", monospace;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      color: #ffd86b;
+      opacity: 0.32;
+      mix-blend-mode: screen;
+      white-space: nowrap;
+      animation: floaty var(--t, 16s) ease-in-out infinite;
+      animation-delay: var(--d, 0s);
+      transform: translate(-50%, -50%);
+    }
+
+    @keyframes floaty {
+      0% { transform: translate(-50%, -50%) translate3d(-8px, -10px, 0) rotate(-6deg); }
+      50% { transform: translate(-50%, -50%) translate3d(10px, 12px, 0) rotate(6deg); }
+      100% { transform: translate(-50%, -50%) translate3d(-8px, -10px, 0) rotate(-6deg); }
+    }
+
     @keyframes drift {
       0% { transform: translate3d(-8%, -8%, 0) rotate(-12deg) scale(1.05); }
       50% { transform: translate3d(8%, 8%, 0) rotate(12deg) scale(1.05); }
@@ -318,6 +345,17 @@ concept graphs &gt; trace("debates")
 remember: coffee++
 multi_agent &gt; negotiate codes &gt; converge?
 link: likich.github.io/likich_site
+</div>
+
+<div class="float-field">
+  <span class="float-line" style="top: 18%; left: 16%; --d: -2s; --t: 17s;">feed.pull("linkedin")</span>
+  <span class="float-line" style="top: 34%; left: 76%; --d: -6s; --t: 19s;">feed.pull("x_thread")</span>
+  <span class="float-line" style="top: 56%; left: 24%; --d: -4s; --t: 18s;">snapshot.cache()</span>
+  <span class="float-line" style="top: 68%; left: 64%; --d: -8s; --t: 16s;">render.cards()</span>
+  <span class="float-line" style="top: 42%; left: 44%; --d: -10s; --t: 20s;">humans_in_loop = true</span>
+  <span class="float-line" style="top: 12%; left: 60%; --d: -12s; --t: 18s;">qual_notes += "Lika"</span>
+  <span class="float-line" style="top: 76%; left: 28%; --d: -14s; --t: 19s;">multi_agent &gt; converge?</span>
+  <span class="float-line" style="top: 84%; left: 82%; --d: -16s; --t: 21s;">concept_graph.trace()</span>
 </div>
 
 <header class="nav">
