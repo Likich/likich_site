@@ -279,14 +279,21 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      opacity: 0.18;
+      opacity: 0.16;
       mix-blend-mode: screen;
       font-family: "Space Grotesk", monospace;
-      font-size: 10px;
-      line-height: 1.2;
+      font-size: 11px;
+      line-height: 1.35;
       color: #4b5563;
       white-space: pre;
       padding: 3rem;
+      animation: drift 18s linear infinite;
+    }
+
+    @keyframes drift {
+      0% { transform: translate3d(-6%, -4%, 0) rotate(-4deg); }
+      50% { transform: translate3d(6%, 4%, 0) rotate(4deg); }
+      100% { transform: translate3d(-6%, -4%, 0) rotate(-4deg); }
     }
 
     @media (max-width: 640px) {
@@ -301,6 +308,9 @@
 feed_sync &gt; linkedin + x
 rate_limiter = reality_check()
 fallback: cached highlights
+LLMs · social science · playful evals
+concept graphs &gt; trace("debates")
+remember: coffee++
 </div>
 
 <header class="nav">

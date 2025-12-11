@@ -152,14 +152,21 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      opacity: 0.18;
+      opacity: 0.16;
       mix-blend-mode: screen;
       font-family: "Space Grotesk", monospace;
-      font-size: 10px;
-      line-height: 1.2;
+      font-size: 11px;
+      line-height: 1.35;
       color: #4b5563;
       white-space: pre;
       padding: 3rem;
+      animation: drift 18s linear infinite;
+    }
+
+    @keyframes drift {
+      0% { transform: translate3d(-6%, -4%, 0) rotate(-4deg); }
+      50% { transform: translate3d(6%, 4%, 0) rotate(4deg); }
+      100% { transform: translate3d(-6%, -4%, 0) rotate(-4deg); }
     }
 
     /* --- Hero --- */
@@ -854,11 +861,13 @@
 <body>
 
 <div class="code-noise">
-01001011  qual_codes() 1101 1011
-LLM_panel &gt;&gt; argue("themes")
-concept_graph &gt; trace("narratives")
-coffee_level += 1 // remember to sleep
-ethics_check: keep_humans_in_loop
+LLM_panel() → debate("qualitative codes")
+concept_graphs() → trace("political narratives")
+multi_agent &gt; convergence? drift? nuance?
+evals &gt; playful_metrics("humans in loop")
+coffee_level++ // remember to sleep
+ica@TUM · ML@HSLU · AI Tinkerers Zurich
+LLMs · inductive coding · interpretability · social science
 </div>
 
 <header class="nav">
