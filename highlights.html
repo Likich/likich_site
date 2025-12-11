@@ -298,6 +298,10 @@
     .float-field {
       position: fixed;
       inset: 0;
+      width: 140vw;
+      height: 140vh;
+      left: -20vw;
+      top: -20vh;
       pointer-events: none;
       z-index: 1;
     }
@@ -305,10 +309,10 @@
     .float-line {
       position: absolute;
       font-family: "Space Grotesk", monospace;
-      font-size: 14px;
+      font-size: 18px;
       letter-spacing: 0.08em;
       color: #ffd86b;
-      opacity: 0.32;
+      opacity: 0.55;
       mix-blend-mode: screen;
       white-space: nowrap;
       animation: floaty var(--t, 16s) ease-in-out infinite;
@@ -348,14 +352,17 @@ link: likich.github.io/likich_site
 </div>
 
 <div class="float-field">
-  <span class="float-line" style="top: 18%; left: 16%; --d: -2s; --t: 17s;">feed.pull("linkedin")</span>
-  <span class="float-line" style="top: 34%; left: 76%; --d: -6s; --t: 19s;">feed.pull("x_thread")</span>
-  <span class="float-line" style="top: 56%; left: 24%; --d: -4s; --t: 18s;">snapshot.cache()</span>
-  <span class="float-line" style="top: 68%; left: 64%; --d: -8s; --t: 16s;">render.cards()</span>
-  <span class="float-line" style="top: 42%; left: 44%; --d: -10s; --t: 20s;">humans_in_loop = true</span>
-  <span class="float-line" style="top: 12%; left: 60%; --d: -12s; --t: 18s;">qual_notes += "Lika"</span>
-  <span class="float-line" style="top: 76%; left: 28%; --d: -14s; --t: 19s;">multi_agent &gt; converge?</span>
-  <span class="float-line" style="top: 84%; left: 82%; --d: -16s; --t: 21s;">concept_graph.trace()</span>
+  <span class="float-line" style="top: 14%; left: 18%; --d: -2s; --t: 17s;">feed.pull("linkedin")</span>
+  <span class="float-line" style="top: 24%; left: 78%; --d: -4s; --t: 19s;">feed.pull("x_thread")</span>
+  <span class="float-line" style="top: 52%; left: 28%; --d: -6s; --t: 18s;">snapshot.cache()</span>
+  <span class="float-line" style="top: 64%; left: 68%; --d: -8s; --t: 16s;">render.cards()</span>
+  <span class="float-line" style="top: 38%; left: 48%; --d: -10s; --t: 20s;">humans_in_loop = true</span>
+  <span class="float-line" style="top: 10%; left: 64%; --d: -12s; --t: 18s;">qual_notes += "Lika"</span>
+  <span class="float-line" style="top: 78%; left: 32%; --d: -14s; --t: 19s;">multi_agent &gt; converge?</span>
+  <span class="float-line" style="top: 86%; left: 86%; --d: -16s; --t: 21s;">concept_graph.trace()</span>
+  <span class="float-line" style="top: 58%; left: 88%; --d: -18s; --t: 22s;">feed.sync()</span>
+  <span class="float-line" style="top: 26%; left: 10%; --d: -20s; --t: 23s;">cache.refresh()</span>
+  <span class="float-line" style="top: 92%; left: 18%; --d: -22s; --t: 24s;">cards.shuffle()</span>
 </div>
 
 <header class="nav">
