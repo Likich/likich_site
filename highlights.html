@@ -47,6 +47,8 @@
       color: var(--text-main);
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
+      position: relative;
+      overflow-x: hidden;
     }
 
     a { color: var(--accent-strong); text-decoration: none; }
@@ -130,6 +132,8 @@
       max-width: 1120px;
       margin: 1.8rem auto 3.5rem auto;
       padding: 0 1.25rem 4rem;
+      position: relative;
+      z-index: 2;
     }
 
     .hero {
@@ -293,6 +297,7 @@
       white-space: pre-wrap;
       padding: 6rem;
       animation: drift 18s linear infinite;
+      z-index: 0;
     }
 
     .float-field {
@@ -303,7 +308,7 @@
       left: -20vw;
       top: -20vh;
       pointer-events: none;
-      z-index: 1;
+      z-index: 0;
     }
 
     .float-line {
