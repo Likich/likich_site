@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Angelina Parfenova – Live Feed</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Live highlights from LinkedIn and X for Angelina Parfenova." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-card: rgba(11, 16, 32, 0.92);
+      --accent: #f4c66a;
+      --accent-strong: #ffd86b;
+      --text-main: #f5f5f5;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.35);
+      --radius-lg: 18px;
+      --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.6);
+      --transition-fast: 0.2s ease-out;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, #141b33 0, #050816 45%, #02030a 100%),
+        repeating-linear-gradient(
+          90deg,
+          rgba(15, 23, 42, 0.9) 0,
+          rgba(15, 23, 42, 0.9) 1px,
+          rgba(2, 6, 23, 0.95) 1px,
+          rgba(2, 6, 23, 0.95) 3px
+        );
+      color: var(--text-main);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent-strong); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(5, 8, 22, 0.9),
+        rgba(5, 8, 22, 0.75),
+        transparent
+      );
+      border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.6rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .nav-logo {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      border: 1px solid rgba(250, 250, 250, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      background: radial-gradient(circle at 20% 0%, #f4c66a 0, #f97373 40%, #050816 100%);
+      box-shadow: 0 0 16px rgba(244, 198, 106, 0.9);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .nav-links a {
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: rgba(244, 198, 106, 0.16);
+      border-color: var(--accent);
+      color: var(--accent-strong);
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 1.8rem auto 3.5rem auto;
+      padding: 0 1.25rem 4rem;
+    }
+
+    .hero {
+      background: linear-gradient(
+          135deg,
+          rgba(244, 198, 106, 0.12),
+          transparent 55%
+        ),
+        var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 26px;
+      padding: 1.6rem 1.8rem;
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      font-size: clamp(1.8rem, 2vw + 1rem, 2.4rem);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero p {
+      color: #e5e7eb;
+      font-size: 0.98rem;
+      max-width: 720px;
+    }
+
+    .feed-status {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .feed-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1rem;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .feed-card {
+      position: relative;
+      padding: 0.95rem 0.95rem 0.85rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-card);
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.55);
+      overflow: hidden;
+      transition: transform var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .feed-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+
+    .feed-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -35% -35% auto;
+      width: 160px;
+      height: 160px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.12), transparent 65%);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .feed-platform {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.28rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 0.78rem;
+      color: #e5e7eb;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 0.5rem;
+    }
+
+    .feed-title {
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.35rem;
+      color: #f8fafc;
+    }
+
+    .feed-title a { color: inherit; text-decoration: none; }
+    .feed-title a:hover { text-decoration: underline; }
+
+    .feed-body {
+      font-size: 0.9rem;
+      color: #e5e7eb;
+      margin-bottom: 0.45rem;
+    }
+
+    .feed-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .feed-shot {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      overflow: hidden;
+      margin: 0.55rem 0 0.35rem;
+      background: #0b1020;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55);
+    }
+
+    .feed-shot img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .howto {
+      margin-top: 2rem;
+      padding: 1.1rem 1.2rem;
+      border-radius: var(--radius-lg);
+      border: 1px dashed rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.9);
+      color: #e5e7eb;
+    }
+
+    .howto h2 {
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+      font-size: 0.98rem;
+    }
+
+    .howto ul { margin-left: 1rem; padding-left: 0.2rem; display: grid; gap: 0.35rem; }
+    .howto li { font-size: 0.9rem; color: #e5e7eb; }
+
+    .code-noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.18;
+      mix-blend-mode: screen;
+      font-family: "Space Grotesk", monospace;
+      font-size: 10px;
+      line-height: 1.2;
+      color: #4b5563;
+      white-space: pre;
+      padding: 3rem;
+    }
+
+    @media (max-width: 640px) {
+      .nav-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+      .nav-links { font-size: 0.76rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="code-noise">
+feed_sync &gt; linkedin + x
+rate_limiter = reality_check()
+fallback: cached highlights
+</div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <div class="nav-logo">LK</div>
+      <span>Likich Research Log</span>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html#top" class="nav-link">Home</a>
+      <a href="index.html#publications" class="nav-link">Publications</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+  <section class="hero">
+    <h1>Live Highlights · <span class="glow-name">Lika</span></h1>
+    <p>All my posts in one place, or maybe not all 👀</p>
+  </section>
+
+  <div class="feed-status" id="feed-status">Loading highlights…</div>
+  <div class="feed-grid" id="feed-list"></div>
+
+
+<script>
+  const feedStatus = document.getElementById('feed-status');
+  const feedList = document.getElementById('feed-list');
+
+  function platformIcon(platform) {
+    if (!platform) return 'fa-asterisk';
+    const p = platform.toLowerCase();
+    if (p === 'linkedin') return 'fa-brands fa-linkedin';
+    if (p === 'x' || p === 'twitter') return 'fa-brands fa-x-twitter';
+    return 'fa-asterisk';
+  }
+
+  function renderFeed(items) {
+    const frag = document.createDocumentFragment();
+    items.forEach(item => {
+      const card = document.createElement('article');
+      card.className = 'feed-card';
+
+      const badge = document.createElement('div');
+      badge.className = 'feed-platform';
+      badge.innerHTML = `<i class="fa ${platformIcon(item.platform)}"></i>${item.platform || 'Highlight'}`;
+      card.appendChild(badge);
+
+      const title = document.createElement('div');
+      title.className = 'feed-title';
+      if (item.url) {
+        const link = document.createElement('a');
+        link.href = item.url;
+        link.target = '_blank';
+        link.rel = 'noopener';
+        link.textContent = item.title || 'View post';
+        title.appendChild(link);
+      } else {
+        title.textContent = item.title || 'Untitled post';
+      }
+      card.appendChild(title);
+
+      if (item.summary) {
+        const body = document.createElement('div');
+        body.className = 'feed-body';
+        body.textContent = item.summary;
+        card.appendChild(body);
+      }
+
+      if (item.image) {
+        const shotWrap = document.createElement('div');
+        shotWrap.className = 'feed-shot';
+        const img = document.createElement('img');
+        img.src = item.image;
+        img.alt = item.title || 'Post screenshot';
+        shotWrap.appendChild(img);
+        card.appendChild(shotWrap);
+      }
+
+      const meta = document.createElement('div');
+      meta.className = 'feed-meta';
+      const bits = [];
+      if (item.date) bits.push(item.date);
+      if (item.url) bits.push('opens in new tab');
+      meta.textContent = bits.join(' · ');
+      card.appendChild(meta);
+
+      frag.appendChild(card);
+    });
+    feedList.appendChild(frag);
+  }
+
+  async function fetchHighlights() {
+    try {
+      const res = await fetch('highlights.json');
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const items = await res.json();
+      const normalized = items.map(it => ({
+        platform: it.platform || 'Highlight',
+        title: it.title || '',
+        summary: it.summary || '',
+        url: it.url || '',
+        image: it.image || '',
+        date: it.date || ''
+      }));
+      normalized.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+
+      if (!normalized.length) {
+        feedStatus.textContent = 'No highlights pinned yet. Edit highlights.json to add some.';
+        return;
+      }
+
+      feedStatus.textContent = '';
+      renderFeed(normalized);
+    } catch (err) {
+      feedStatus.textContent = 'Could not load highlights. Ensure highlights.json is deployed alongside this page.';
+      console.error('Highlights fetch error:', err);
+    }
+  }
+
+  fetchHighlights();
+</script>
+
+</body>
+</html>
