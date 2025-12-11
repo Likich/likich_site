@@ -278,23 +278,27 @@
     .code-noise {
       position: fixed;
       inset: 0;
+      width: 140vw;
+      height: 140vh;
+      left: -20vw;
+      top: -20vh;
       pointer-events: none;
-      opacity: 0.22;
+      opacity: 0.32;
       mix-blend-mode: screen;
       font-family: "Space Grotesk", monospace;
-      font-size: 14px;
-      line-height: 1.5;
-      letter-spacing: 0.06em;
-      color: #4b5563;
-      white-space: pre;
-      padding: 5rem;
+      font-size: 16px;
+      line-height: 1.6;
+      letter-spacing: 0.08em;
+      color: #f4c66a;
+      white-space: pre-wrap;
+      padding: 6rem;
       animation: drift 18s linear infinite;
     }
 
     @keyframes drift {
-      0% { transform: translate3d(-6%, -4%, 0) rotate(-4deg); }
-      50% { transform: translate3d(6%, 4%, 0) rotate(4deg); }
-      100% { transform: translate3d(-6%, -4%, 0) rotate(-4deg); }
+      0% { transform: translate3d(-8%, -8%, 0) rotate(-12deg) scale(1.05); }
+      50% { transform: translate3d(8%, 8%, 0) rotate(12deg) scale(1.05); }
+      100% { transform: translate3d(-8%, -8%, 0) rotate(-12deg) scale(1.05); }
     }
 
     @media (max-width: 640px) {
@@ -312,6 +316,8 @@ fallback: cached highlights
 LLMs · social science · playful evals
 concept graphs &gt; trace("debates")
 remember: coffee++
+multi_agent &gt; negotiate codes &gt; converge?
+link: likich.github.io/likich_site
 </div>
 
 <header class="nav">

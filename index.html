@@ -151,23 +151,27 @@
     .code-noise {
       position: fixed;
       inset: 0;
+      width: 140vw;
+      height: 140vh;
+      left: -20vw;
+      top: -20vh;
       pointer-events: none;
-      opacity: 0.22;
+      opacity: 0.32;
       mix-blend-mode: screen;
       font-family: "Space Grotesk", monospace;
-      font-size: 14px;
-      line-height: 1.5;
-      letter-spacing: 0.06em;
-      color: #4b5563;
-      white-space: pre;
-      padding: 5rem;
+      font-size: 16px;
+      line-height: 1.6;
+      letter-spacing: 0.08em;
+      color: #f4c66a;
+      white-space: pre-wrap;
+      padding: 6rem;
       animation: drift 18s linear infinite;
     }
 
     @keyframes drift {
-      0% { transform: translate3d(-6%, -4%, 0) rotate(-4deg); }
-      50% { transform: translate3d(6%, 4%, 0) rotate(4deg); }
-      100% { transform: translate3d(-6%, -4%, 0) rotate(-4deg); }
+      0% { transform: translate3d(-8%, -8%, 0) rotate(-12deg) scale(1.05); }
+      50% { transform: translate3d(8%, 8%, 0) rotate(12deg) scale(1.05); }
+      100% { transform: translate3d(-8%, -8%, 0) rotate(-12deg) scale(1.05); }
     }
 
     /* --- Hero --- */
@@ -862,13 +866,17 @@
 <body>
 
 <div class="code-noise">
-LLM_panel() → debate("qualitative codes")
-concept_graphs() → trace("political narratives")
-multi_agent &gt; convergence? drift? nuance?
-evals &gt; playful_metrics("humans in loop")
+LLM_panel() → debate("qualitative codes") → consensus?
+concept_graphs() → trace("political narratives") → reveal drift()
+multi_agent &gt; convergence? divergence? nuance?
+evals &gt; playful_metrics("humans in loop") // explain yourself
 coffee_level++ // remember to sleep
-ica@TUM · ML@HSLU · AI Tinkerers Zurich
-LLMs · inductive coding · interpretability · social science
+ica@TUM · ML@HSLU · AI Tinkerers Zurich · Lika / Likich
+LLMs · inductive coding · interpretability · social science · politics
+ensemble LLMs &gt; open coding &gt; label refinement &gt; human review
+topic models &gt; graphs &gt; debates &gt; concept drift watch
+LLM panels &gt; argue &gt; negotiate &gt; converge?
+remember: keep humans in the loop; document assumptions
 </div>
 
 <header class="nav">
