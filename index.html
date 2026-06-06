@@ -19,15 +19,15 @@
 
   <style>
     :root {
-      --bg: #070a12;
-      --bg-soft: #0d121d;
-      --bg-card: #0d121d;
-      --accent: #f4c66a;
-      --accent-soft: rgba(244, 198, 106, 0.16);
-      --accent-strong: #ffd86b;
-      --text-main: #f5f5f5;
-      --text-muted: #9ca3af;
-      --border-subtle: rgba(148, 163, 184, 0.35);
+      --bg: #f5f5f2;
+      --bg-soft: #ecece7;
+      --bg-card: #ffffff;
+      --accent: #a65f16;
+      --accent-soft: rgba(166, 95, 22, 0.1);
+      --accent-strong: #87470d;
+      --text-main: #1e2630;
+      --text-muted: #66707c;
+      --border-subtle: rgba(30, 38, 48, 0.16);
       --radius-lg: 8px;
       --radius-xl: 10px;
       --shadow-soft: none;
@@ -42,7 +42,7 @@
 
     body {
       font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: linear-gradient(180deg, #0b101a 0%, var(--bg) 38rem);
+      background: linear-gradient(180deg, #fafaf8 0%, var(--bg) 38rem);
       color: var(--text-main);
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
@@ -65,8 +65,8 @@
       top: 0;
       z-index: 30;
       backdrop-filter: blur(12px);
-      background: rgba(7, 10, 18, 0.94);
-      border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+      background: rgba(250, 250, 248, 0.94);
+      border-bottom: 1px solid var(--border-subtle);
     }
 
     .nav-inner {
@@ -94,7 +94,7 @@
       width: 26px;
       height: 26px;
       border-radius: 50%;
-      border: 1px solid rgba(250, 250, 250, 0.6);
+      border: 1px solid var(--accent);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -685,6 +685,107 @@
       text-align: right;
     }
 
+    /* --- Academic light theme --- */
+    .hero {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.4rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .hero-main {
+      max-width: 780px;
+    }
+
+    .glow-name {
+      color: var(--accent);
+    }
+
+    .hero-lede,
+    .section-card p,
+    .project-card p,
+    .id-meta-line,
+    .now-card li,
+    .pub-title {
+      color: #374151;
+    }
+
+    .pill,
+    .hero-tag,
+    .id-tags span,
+    .icon-circle,
+    .contact-pill {
+      background: #fff;
+      border-color: var(--border-subtle);
+      color: #374151;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: #374151;
+      border-color: rgba(30, 38, 48, 0.28);
+    }
+
+    .id-card-wrap {
+      justify-self: stretch;
+    }
+
+    .id-card {
+      max-width: 780px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.9rem;
+      padding: 1rem 1.1rem;
+    }
+
+    .id-main {
+      grid-template-columns: 88px minmax(0, 1fr);
+      align-items: start;
+    }
+
+    .id-photo {
+      height: 104px;
+    }
+
+    .id-photo-fallback {
+      height: 104px;
+      background: var(--bg-soft);
+      color: var(--accent);
+    }
+
+    .id-bars {
+      height: 3px;
+    }
+
+    .now-card {
+      display: inline-block;
+      width: auto;
+      border-style: solid;
+      border-color: var(--border-subtle);
+      background: transparent;
+      padding: 0.65rem 0.8rem;
+    }
+
+    .section-card,
+    .project-card {
+      background: #fff;
+    }
+
+    #publications .section-card,
+    #contact .section-card {
+      padding: 0;
+      background: transparent;
+      border: 0;
+    }
+
+    .pub-item {
+      padding: 0.8rem 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .contact-pill {
+      display: inline-block;
+    }
+
     /* --- Responsive --- */
     @media (max-width: 860px) {
       .hero {
@@ -692,7 +793,7 @@
       }
 
       .id-card-wrap {
-        order: -1;
+        order: initial;
       }
 
       .page {
