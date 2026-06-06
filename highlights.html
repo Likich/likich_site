@@ -19,15 +19,15 @@
 
   <style>
     :root {
-      --bg: #050816;
-      --bg-card: rgba(11, 16, 32, 0.92);
+      --bg: #070a12;
+      --bg-card: #0d121d;
       --accent: #f4c66a;
       --accent-strong: #ffd86b;
       --text-main: #f5f5f5;
       --text-muted: #9ca3af;
       --border-subtle: rgba(148, 163, 184, 0.35);
-      --radius-lg: 14px;
-      --shadow-soft: 0 14px 36px rgba(0, 0, 0, 0.45);
+      --radius-lg: 8px;
+      --shadow-soft: none;
       --transition-fast: 0.2s ease-out;
     }
 
@@ -35,15 +35,7 @@
 
     body {
       font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top, #141b33 0, #050816 45%, #02030a 100%),
-        repeating-linear-gradient(
-          90deg,
-          rgba(15, 23, 42, 0.9) 0,
-          rgba(15, 23, 42, 0.9) 1px,
-          rgba(2, 6, 23, 0.95) 1px,
-          rgba(2, 6, 23, 0.95) 3px
-        );
+      background: linear-gradient(180deg, #0b101a 0%, var(--bg) 38rem);
       color: var(--text-main);
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
@@ -58,13 +50,8 @@
       position: sticky;
       top: 0;
       z-index: 30;
-      backdrop-filter: blur(18px);
-      background: linear-gradient(
-        to bottom,
-        rgba(5, 8, 22, 0.9),
-        rgba(5, 8, 22, 0.75),
-        transparent
-      );
+      backdrop-filter: blur(12px);
+      background: rgba(7, 10, 18, 0.94);
       border-bottom: 1px solid rgba(148, 163, 184, 0.3);
     }
 
@@ -85,7 +72,7 @@
       font-family: "Space Grotesk", system-ui, sans-serif;
       font-weight: 600;
       font-size: 1rem;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
@@ -98,8 +85,8 @@
       align-items: center;
       justify-content: center;
       font-size: 0.78rem;
-      background: radial-gradient(circle at 20% 0%, #f4c66a 0, #f97373 40%, #050816 100%);
-      box-shadow: 0 0 8px rgba(244, 198, 106, 0.45);
+      background: var(--accent);
+      color: #111827;
     }
 
     .nav-links {
@@ -108,23 +95,22 @@
       gap: 0.7rem;
       font-size: 0.85rem;
       text-transform: uppercase;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.08em;
     }
 
     .nav-links a {
       padding: 0.3rem 0.75rem;
-      border-radius: 999px;
-      border: 1px solid transparent;
+      border-radius: 0;
+      border-bottom: 1px solid transparent;
       color: var(--text-muted);
       transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
     }
 
     .nav-links a:hover,
     .nav-links a.active {
-      background: rgba(244, 198, 106, 0.16);
-      border-color: var(--accent);
+      background: transparent;
+      border-bottom-color: var(--accent);
       color: var(--accent-strong);
-      transform: translateY(-1px);
       text-decoration: none;
     }
 
@@ -137,23 +123,18 @@
     }
 
     .hero {
-      background: linear-gradient(
-          135deg,
-          rgba(244, 198, 106, 0.07),
-          transparent 55%
-        ),
-        var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: 26px;
-      padding: 1.6rem 1.8rem;
-      box-shadow: var(--shadow-soft);
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      padding: 0.75rem 0;
+      box-shadow: none;
       margin-bottom: 2rem;
     }
 
     .hero h1 {
       font-family: "Space Grotesk", system-ui, sans-serif;
       font-size: clamp(1.8rem, 2vw + 1rem, 2.4rem);
-      letter-spacing: 0.12em;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
       margin-bottom: 0.4rem;
     }
@@ -184,25 +165,13 @@
       border-radius: var(--radius-lg);
       border: 1px solid var(--border-subtle);
       background: var(--bg-card);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+      box-shadow: none;
       overflow: hidden;
-      transition: transform var(--transition-fast), border-color var(--transition-fast);
+      transition: border-color var(--transition-fast);
     }
 
     .feed-card:hover {
-      transform: translateY(-2px);
       border-color: var(--accent);
-    }
-
-    .feed-card::before {
-      content: "";
-      position: absolute;
-      inset: auto -35% -35% auto;
-      width: 160px;
-      height: 160px;
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.12), transparent 65%);
-      opacity: 0.6;
-      pointer-events: none;
     }
 
     .feed-platform {
@@ -210,13 +179,13 @@
       align-items: center;
       gap: 0.45rem;
       padding: 0.28rem 0.7rem;
-      border-radius: 999px;
+      border-radius: 4px;
       border: 1px solid rgba(148, 163, 184, 0.55);
       background: rgba(15, 23, 42, 0.9);
       font-size: 0.78rem;
       color: #e5e7eb;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.08em;
       margin-bottom: 0.5rem;
     }
 
@@ -244,12 +213,12 @@
 
     .feed-shot {
       width: 100%;
-      border-radius: 14px;
+      border-radius: 6px;
       border: 1px solid rgba(148, 163, 184, 0.45);
       overflow: hidden;
       margin: 0.55rem 0 0.35rem;
       background: #0b1020;
-      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55);
+      box-shadow: none;
     }
 
     .feed-shot img {
@@ -279,36 +248,9 @@
     .howto ul { margin-left: 1rem; padding-left: 0.2rem; display: grid; gap: 0.35rem; }
     .howto li { font-size: 0.9rem; color: #e5e7eb; }
 
-    .code-noise {
-      position: fixed;
-      inset: 0;
-      width: 140vw;
-      height: 140vh;
-      left: -20vw;
-      top: -20vh;
-      pointer-events: none;
-      opacity: 0.09;
-      mix-blend-mode: screen;
-      font-family: "Space Grotesk", monospace;
-      font-size: 13px;
-      line-height: 1.6;
-      letter-spacing: 0.04em;
-      color: #d8b76a;
-      white-space: pre-wrap;
-      padding: 6rem;
-      animation: drift 70s ease-in-out infinite;
-      z-index: 0;
-    }
-
-    @keyframes drift {
-      0% { transform: translate3d(-4%, -4%, 0) rotate(-6deg) scale(1.02); }
-      50% { transform: translate3d(4%, 4%, 0) rotate(6deg) scale(1.02); }
-      100% { transform: translate3d(-4%, -4%, 0) rotate(-6deg) scale(1.02); }
-    }
-
     .glow-name {
       color: #ffd86b;
-      text-shadow: 0 0 10px rgba(255, 216, 107, 0.35);
+      text-shadow: none;
     }
 
     @media (max-width: 640px) {
@@ -318,17 +260,6 @@
   </style>
 </head>
 <body>
-
-<div class="code-noise">
-feed_sync &gt; linkedin + x
-rate_limiter = reality_check()
-fallback: cached highlights
-LLMs · social science · playful evals
-concept graphs &gt; trace("debates")
-remember: coffee++
-multi_agent &gt; negotiate codes &gt; converge?
-link: likich.github.io/likich_site
-</div>
 
 <header class="nav">
   <div class="nav-inner">
