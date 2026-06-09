@@ -8,8 +8,40 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="site-version" content="2026-06-09.2" />
+  <meta name="site-version" content="2026-06-09.3" />
   <meta name="description" content="Angelina Parfenova – ML Researcher & PhD in Computational Social Science" />
+  <script>
+    (() => {
+      const currentVersion = document.querySelector('meta[name="site-version"]')?.content;
+
+      async function refreshStalePage() {
+        try {
+          const versionUrl = new URL('site-version.json', document.baseURI);
+          versionUrl.searchParams.set('fresh', Date.now());
+          const response = await fetch(versionUrl, { cache: 'no-store' });
+          if (!response.ok) return;
+
+          const { version } = await response.json();
+          if (!version || version === currentVersion) return;
+
+          const reloadKey = `site-version-${version}`;
+          if (sessionStorage.getItem(reloadKey)) return;
+          sessionStorage.setItem(reloadKey, 'reloaded');
+
+          const pageUrl = new URL(window.location.href);
+          pageUrl.searchParams.set('v', version);
+          window.location.replace(pageUrl);
+        } catch (error) {
+          console.debug('Site version check skipped:', error);
+        }
+      }
+
+      window.addEventListener('pageshow', refreshStalePage);
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') refreshStalePage();
+      });
+    })();
+  </script>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -837,7 +869,7 @@
       <span>Likich Research Log</span>
     </div>
     <nav class="nav-links">
-      <a href="highlights.html?v=20260609" class="nav-link">Updates</a>
+      <a href="highlights.html?v=2026-06-09.3" class="nav-link">Updates</a>
       <a href="#top" class="nav-link active">Home</a>
       <a href="#research" class="nav-link">Research</a>
       <a href="#projects" class="nav-link">Projects</a>
