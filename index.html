@@ -8,7 +8,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="site-version" content="2026-06-09.3" />
+  <meta name="site-version" content="2026-06-09.4" />
   <meta name="description" content="Angelina Parfenova – ML Researcher & PhD in Computational Social Science" />
   <script>
     (() => {
@@ -518,6 +518,7 @@
     /* --- Sections --- */
     section {
       margin-bottom: 2.6rem;
+      scroll-margin-top: 92px;
     }
 
     .section-header {
@@ -579,56 +580,169 @@
       margin-bottom: 0.75rem;
     }
 
-    /* Projects */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.1rem;
-    }
-
-    .project-card {
-      position: relative;
-      padding: 1.2rem 1.1rem;
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: var(--bg-card);
-      box-shadow: none;
+    /* Ideas graph */
+    .graph-shell {
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      background: #fff;
       overflow: hidden;
-      transition: border-color var(--transition-fast);
     }
 
-    .project-card:hover {
-      border-color: var(--accent);
+    .graph-toolbar {
+      min-height: 54px;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.7rem;
     }
 
-    .project-title {
-      font-family: "Space Grotesk", system-ui, sans-serif;
-      font-size: 0.98rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 0.35rem;
-    }
-
-    .project-title a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .project-title a:hover {
-      text-decoration: underline;
-    }
-
-    .project-meta {
-      font-size: 0.78rem;
+    .graph-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
       color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      margin-bottom: 0.4rem;
+      font-size: 0.76rem;
     }
 
-    .project-card p {
-      font-size: 0.9rem;
-      color: #e5e7eb;
+    .graph-legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .graph-legend i {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .legend-idea {
+      background: #d28a43;
+    }
+
+    .legend-method {
+      background: #8293a7;
+    }
+
+    .legend-project {
+      background: #2f3d4f;
+    }
+
+    .graph-reset {
+      border: 1px solid var(--border-subtle);
+      border-radius: 5px;
+      padding: 0.35rem 0.65rem;
+      color: #374151;
+      background: #fff;
+      font: inherit;
+      font-size: 0.75rem;
+      cursor: pointer;
+    }
+
+    .graph-reset:hover {
+      border-color: var(--accent);
+      color: var(--accent-strong);
+    }
+
+    .graph-viewport {
+      width: 100%;
+      overflow-x: auto;
+      background:
+        linear-gradient(rgba(30, 38, 48, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(30, 38, 48, 0.035) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    #ideas-graph {
+      display: block;
+      width: 100%;
+      min-width: 760px;
+      height: 620px;
+      cursor: grab;
+    }
+
+    #ideas-graph:active {
+      cursor: grabbing;
+    }
+
+    .graph-link {
+      stroke: #c7cdd4;
+      stroke-opacity: 0.82;
+      stroke-width: 1.25px;
+    }
+
+    .graph-node {
+      cursor: grab;
+      outline: none;
+    }
+
+    .graph-node:active {
+      cursor: grabbing;
+    }
+
+    .graph-node circle {
+      stroke: #fff;
+      stroke-width: 3px;
+      filter: drop-shadow(0 2px 3px rgba(30, 38, 48, 0.16));
+      transition: stroke-width 0.18s ease, filter 0.18s ease;
+    }
+
+    .graph-node:hover circle,
+    .graph-node:focus circle {
+      stroke: var(--accent-strong);
+      stroke-width: 4px;
+      filter: drop-shadow(0 3px 5px rgba(30, 38, 48, 0.24));
+    }
+
+    .graph-node-label {
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      fill: #27313d;
+      text-anchor: middle;
+      pointer-events: none;
+      paint-order: stroke;
+      stroke: rgba(255, 255, 255, 0.95);
+      stroke-width: 4px;
+      stroke-linejoin: round;
+    }
+
+    .graph-node-label.hub {
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .graph-project-mark {
+      fill: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      text-anchor: middle;
+      pointer-events: none;
+    }
+
+    .graph-detail {
+      min-height: 62px;
+      border-top: 1px solid var(--border-subtle);
+      padding: 0.8rem 1rem;
+      color: #374151;
+      font-size: 0.82rem;
+      line-height: 1.45;
+    }
+
+    .graph-detail strong {
+      color: var(--text-main);
+    }
+
+    .graph-detail a {
+      margin-left: 0.25rem;
+      font-weight: 600;
     }
 
     /* Now card */
@@ -740,7 +854,6 @@
 
     .hero-lede,
     .section-card p,
-    .project-card p,
     .id-meta-line,
     .now-card li,
     .pub-title {
@@ -803,8 +916,7 @@
       padding: 0.65rem 0.8rem;
     }
 
-    .section-card,
-    .project-card {
+    .section-card {
       background: #fff;
     }
 
@@ -857,6 +969,23 @@
       .section-card {
         padding: 1.1rem 1.1rem 1rem;
       }
+
+      section {
+        scroll-margin-top: 142px;
+      }
+
+      .section-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .graph-toolbar {
+        align-items: flex-start;
+      }
+
+      #ideas-graph {
+        height: 560px;
+      }
     }
   </style>
 </head>
@@ -869,10 +998,9 @@
       <span>Likich Research Log</span>
     </div>
     <nav class="nav-links">
-      <a href="highlights.html?v=2026-06-09.3" class="nav-link">Updates</a>
+      <a href="highlights.html?v=2026-06-09.4" class="nav-link">Updates</a>
       <a href="#top" class="nav-link active">Home</a>
-      <a href="#research" class="nav-link">Research</a>
-      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#ideas" class="nav-link">Ideas Graph</a>
       <a href="#publications" class="nav-link">Publications</a>
       <a href="#contact" class="nav-link">Contact</a>
     </nav>
@@ -992,74 +1120,31 @@
     </div>
   </section>
 
-  <!-- ABOUT / RESEARCH THEMES -->
-  <section id="research">
+  <!-- IDEAS & PROJECTS GRAPH -->
+  <section id="ideas">
     <div class="section-header">
-      <h2 class="section-title">Research Themes</h2>
-      <p class="section-sub">How I use LLMs to make qualitative social science a bit less painful and a bit more fun.</p>
+      <h2 class="section-title">Ideas &amp; Projects</h2>
+      <p class="section-sub">Drag the nodes to rearrange them. Scroll to zoom; drag the background to pan.</p>
     </div>
 
-    <div class="section-grid">
-      <article class="section-card">
-        <h3>LLMs for Inductive Coding</h3>
-        <p>
-          Designing ensemble pipelines where multiple LLMs propose open codes for qualitative data
-          and a moderator model refines them into compact, human-interpretable label sets.
-        </p>
-        <p class="meta-line">Keywords: open coding · label refinement · evaluation metrics</p>
-      </article>
-
-      <article class="section-card">
-        <h3>Multi-Agent LLM Discussions</h3>
-        <p>
-          Simulating groups of models that discuss and negotiate codes for text, to study patterns of
-          agreement, influence, bias, and “social” behaviour in artificial collectives.
-        </p>
-        <p class="meta-line">Keywords: multi-agent systems · negotiation · discourse features</p>
-      </article>
-
-      <article class="section-card">
-        <h3>Concept Graphs of Political Debates</h3>
-        <p>
-          Building hierarchical concept graphs from parliamentary speech, connecting utterances,
-          codes, and higher-order themes to explore political cleavages and narratives.
-        </p>
-        <p class="meta-line">Keywords: political text · axial coding · graph visualization</p>
-      </article>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects">
-    <div class="section-header">
-      <h2 class="section-title">Projects &amp; Tools</h2>
-      <p class="section-sub">A few experiments that keep my browser tabs open at night.</p>
-    </div>
-
-    <div class="projects-grid">
-      <article class="project-card">
-        <div class="project-title">
-          <i class="fa-brands fa-github"></i>
-          <a href="https://github.com/Likich/TM_graph" target="_blank" rel="noopener">Likich/TM_graph</a>
+    <div class="graph-shell">
+      <div class="graph-toolbar">
+        <div class="graph-legend" aria-label="Graph legend">
+          <span><i class="legend-idea"></i>Ideas</span>
+          <span><i class="legend-method"></i>Methods</span>
+          <span><i class="legend-project"></i>Projects</span>
         </div>
-        <div class="project-meta">Topic modeling · Graph viz · Python</div>
-        <p>
-          Pinned GitHub repo for visualizing topic models as interactive graphs: a clean way to explore
-          themes, connections, and dominant terms without living inside notebooks.
-        </p>
-      </article>
-
-      <article class="project-card">
-        <div class="project-title">
-          <i class="fa-brands fa-github"></i>
-          <a href="https://github.com/Likich/brain-decoder-experiments" target="_blank" rel="noopener">Likich/brain-decoder-experiments</a>
-        </div>
-        <div class="project-meta">Neuro ML · Signal decoding · Experiments</div>
-        <p>
-          Pinned GitHub repo for brain-signal decoding experiments: model baselines, data prep, and
-          exploratory notebooks aimed at mapping neural signals to interpretable representations.
-        </p>
-      </article>
+        <button class="graph-reset" id="graph-reset" type="button">Reset view</button>
+      </div>
+      <div class="graph-viewport">
+        <svg id="ideas-graph" role="img" aria-labelledby="ideas-graph-title ideas-graph-description">
+          <title id="ideas-graph-title">Angelina Parfenova’s ideas and projects graph</title>
+          <desc id="ideas-graph-description">An interactive network connecting research ideas, methods, and GitHub projects.</desc>
+        </svg>
+      </div>
+      <div class="graph-detail" id="graph-detail" aria-live="polite">
+        <strong>Explore the graph.</strong> Hover over or focus a node to see what connects it to the rest of my work.
+      </div>
     </div>
   </section>
 
@@ -1107,6 +1192,7 @@
   </div>
 </main>
 
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
 <script>
   // Portrait: fade in when loaded; retry alt source; fall back to initial.
   const portrait = document.querySelector('.id-photo');
@@ -1144,14 +1230,347 @@
         e.preventDefault();
         const target = document.querySelector(href);
         if (target) {
+          const navHeight = document.querySelector('.nav')?.offsetHeight || 72;
           window.scrollTo({
-            top: target.offsetTop - 72,
+            top: target.offsetTop - navHeight - 16,
             behavior: 'smooth'
           });
         }
       }
     });
   });
+
+  // Interactive research graph
+  function initIdeasGraph() {
+    const svgElement = document.getElementById('ideas-graph');
+    const detail = document.getElementById('graph-detail');
+    const resetButton = document.getElementById('graph-reset');
+    if (!svgElement || !detail) return;
+
+    if (typeof d3 === 'undefined') {
+      detail.textContent = 'The interactive graph could not load. The rest of the website is still available.';
+      return;
+    }
+
+    const nodes = [
+      {
+        id: 'hub',
+        label: 'NLP × Social Science',
+        group: 'hub',
+        description: 'The central exchange: NLP methods for social science, and social science for understanding NLP.'
+      },
+      {
+        id: 'inductive-coding',
+        label: 'LLMs for Inductive Coding',
+        group: 'idea',
+        description: 'Using language models to propose, compare, and refine qualitative codes.'
+      },
+      {
+        id: 'multi-agent',
+        label: 'Multi-Agent LLM Discussions',
+        group: 'idea',
+        description: 'Studying agreement, influence, and coordination when models discuss interpretations.'
+      },
+      {
+        id: 'political-graphs',
+        label: 'Concept Graphs of Political Debates',
+        group: 'idea',
+        description: 'Connecting quotes, codes, and higher-order concepts in political text.'
+      },
+      {
+        id: 'ai-text',
+        label: 'Persona-Generated AI Text',
+        group: 'idea',
+        description: 'Detecting generated text through interpretable linguistic signals.'
+      },
+      {
+        id: 'narratives',
+        label: 'Narrative Extraction',
+        group: 'idea',
+        description: 'Finding structured narratives in complex historical and qualitative documents.'
+      },
+      {
+        id: 'human-llm',
+        label: 'Human–LLM Annotation',
+        group: 'idea',
+        description: 'Comparing model-generated coding decisions with expert qualitative analysis.'
+      },
+      {
+        id: 'ensemble',
+        label: 'Ensemble LMs',
+        group: 'method',
+        description: 'Combining multiple model perspectives instead of relying on one response.'
+      },
+      {
+        id: 'axial-coding',
+        label: 'Axial Coding',
+        group: 'method',
+        description: 'Linking initial codes into categories, relationships, and larger concepts.'
+      },
+      {
+        id: 'label-refinement',
+        label: 'Label Refinement',
+        group: 'method',
+        description: 'Consolidating noisy labels into compact, interpretable coding schemes.'
+      },
+      {
+        id: 'linguistic-features',
+        label: 'Interpretable Linguistic Features',
+        group: 'method',
+        description: 'Using understandable language features to explain model predictions.'
+      },
+      {
+        id: 'graph-viz',
+        label: 'Graph Visualization',
+        group: 'method',
+        description: 'Making relationships between topics and concepts visible and explorable.'
+      },
+      {
+        id: 'tm-graph',
+        label: 'TM Graph',
+        group: 'project',
+        description: 'A GitHub project for exploring topic models as interactive graphs.',
+        url: 'https://github.com/Likich/TM_graph'
+      },
+      {
+        id: 'brain-decoder',
+        label: 'Brain Decoder Experiments',
+        group: 'project',
+        description: 'Experiments connecting neural signals with interpretable representations.',
+        url: 'https://github.com/Likich/brain-decoder-experiments'
+      }
+    ];
+
+    const links = [
+      { source: 'hub', target: 'inductive-coding' },
+      { source: 'hub', target: 'multi-agent' },
+      { source: 'hub', target: 'political-graphs' },
+      { source: 'hub', target: 'ai-text' },
+      { source: 'hub', target: 'narratives' },
+      { source: 'hub', target: 'human-llm' },
+      { source: 'hub', target: 'brain-decoder' },
+      { source: 'inductive-coding', target: 'ensemble' },
+      { source: 'inductive-coding', target: 'label-refinement' },
+      { source: 'inductive-coding', target: 'human-llm' },
+      { source: 'multi-agent', target: 'ensemble' },
+      { source: 'multi-agent', target: 'human-llm' },
+      { source: 'political-graphs', target: 'axial-coding' },
+      { source: 'political-graphs', target: 'graph-viz' },
+      { source: 'ai-text', target: 'linguistic-features' },
+      { source: 'narratives', target: 'ensemble' },
+      { source: 'tm-graph', target: 'graph-viz' },
+      { source: 'brain-decoder', target: 'linguistic-features' }
+    ];
+
+    const colors = {
+      hub: '#a65f16',
+      idea: '#d28a43',
+      method: '#8293a7',
+      project: '#2f3d4f'
+    };
+    const radii = { hub: 43, idea: 25, method: 18, project: 29 };
+    const width = Math.max(svgElement.clientWidth, 760);
+    const height = svgElement.clientHeight || 620;
+
+    const initialPositions = [
+      [0.50, 0.50], [0.27, 0.27], [0.50, 0.19], [0.73, 0.28],
+      [0.78, 0.58], [0.61, 0.78], [0.38, 0.76], [0.39, 0.40],
+      [0.63, 0.42], [0.20, 0.55], [0.85, 0.39], [0.73, 0.74],
+      [0.88, 0.82], [0.16, 0.82]
+    ];
+    nodes.forEach((node, index) => {
+      node.radius = radii[node.group];
+      node.x = initialPositions[index][0] * width;
+      node.y = initialPositions[index][1] * height;
+    });
+
+    const svg = d3.select(svgElement)
+      .attr('viewBox', `0 0 ${width} ${height}`);
+    const viewport = svgElement.closest('.graph-viewport');
+    const zoomLayer = svg.append('g');
+    const linkLayer = zoomLayer.append('g');
+    const nodeLayer = zoomLayer.append('g');
+
+    const link = linkLayer.selectAll('line')
+      .data(links)
+      .join('line')
+      .attr('class', 'graph-link');
+
+    const node = nodeLayer.selectAll('g')
+      .data(nodes)
+      .join('g')
+      .attr('class', 'graph-node')
+      .attr('tabindex', 0)
+      .attr('role', d => d.url ? 'link' : 'img')
+      .attr('aria-label', d => `${d.label}. ${d.description}${d.url ? ' Opens a GitHub project.' : ''}`);
+
+    node.append('circle')
+      .attr('r', d => d.radius)
+      .attr('fill', d => colors[d.group]);
+
+    node.filter(d => d.group === 'project')
+      .append('text')
+      .attr('class', 'graph-project-mark')
+      .attr('dy', '0.35em')
+      .text('GH');
+
+    const labels = node.append('text')
+      .attr('class', d => `graph-node-label${d.group === 'hub' ? ' hub' : ''}`);
+
+    labels.each(function(d) {
+      const text = d3.select(this);
+      const words = d.label.split(/\s+/);
+      const maxWidth = d.group === 'hub' ? 165 : 138;
+      const labelY = d.radius + 17;
+      let line = [];
+      let lineNumber = 0;
+      let tspan = text.append('tspan')
+        .attr('x', 0)
+        .attr('y', labelY);
+
+      words.forEach(word => {
+        line.push(word);
+        tspan.text(line.join(' '));
+        if (tspan.node().getComputedTextLength() > maxWidth && line.length > 1) {
+          line.pop();
+          tspan.text(line.join(' '));
+          line = [word];
+          lineNumber += 1;
+          tspan = text.append('tspan')
+            .attr('x', 0)
+            .attr('y', labelY)
+            .attr('dy', `${lineNumber * 1.15}em`)
+            .text(word);
+        }
+      });
+    });
+
+    const connectedIds = nodeId => {
+      const ids = new Set([nodeId]);
+      links.forEach(item => {
+        const sourceId = typeof item.source === 'object' ? item.source.id : item.source;
+        const targetId = typeof item.target === 'object' ? item.target.id : item.target;
+        if (sourceId === nodeId) ids.add(targetId);
+        if (targetId === nodeId) ids.add(sourceId);
+      });
+      return ids;
+    };
+
+    const showDetail = d => {
+      detail.replaceChildren();
+      const title = document.createElement('strong');
+      title.textContent = d.label;
+      detail.append(title, document.createTextNode(`. ${d.description}`));
+      if (d.url) {
+        const projectLink = document.createElement('a');
+        projectLink.href = d.url;
+        projectLink.target = '_blank';
+        projectLink.rel = 'noopener';
+        projectLink.textContent = 'Open on GitHub';
+        detail.append(projectLink);
+      }
+
+      const related = connectedIds(d.id);
+      node.attr('opacity', item => related.has(item.id) ? 1 : 0.22);
+      link.attr('stroke-opacity', item => {
+        const sourceId = typeof item.source === 'object' ? item.source.id : item.source;
+        const targetId = typeof item.target === 'object' ? item.target.id : item.target;
+        return sourceId === d.id || targetId === d.id ? 1 : 0.12;
+      });
+    };
+
+    const clearFocus = () => {
+      node.attr('opacity', 1);
+      link.attr('stroke-opacity', 0.82);
+    };
+
+    node
+      .on('mouseenter focus', (event, d) => showDetail(d))
+      .on('mouseleave blur', clearFocus)
+      .on('click', (event, d) => {
+        showDetail(d);
+        if (!event.defaultPrevented && d.url) {
+          window.open(d.url, '_blank', 'noopener');
+        }
+      })
+      .on('keydown', (event, d) => {
+        if (d.url && (event.key === 'Enter' || event.key === ' ')) {
+          event.preventDefault();
+          window.open(d.url, '_blank', 'noopener');
+        }
+      });
+
+    const simulation = d3.forceSimulation(nodes)
+      .force('link', d3.forceLink(links)
+        .id(d => d.id)
+        .distance(d => d.source.group === 'method' || d.target.group === 'method' ? 105 : 145)
+        .strength(0.62))
+      .force('charge', d3.forceManyBody().strength(d => d.group === 'hub' ? -720 : -390))
+      .force('center', d3.forceCenter(width / 2, height / 2))
+      .force('x', d3.forceX(width / 2).strength(0.025))
+      .force('y', d3.forceY(height / 2).strength(0.04))
+      .force('collision', d3.forceCollide().radius(d => d.radius + (d.group === 'method' ? 47 : 60)))
+      .alpha(0.8)
+      .alphaDecay(window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0.12 : 0.045)
+      .on('tick', () => {
+        nodes.forEach(d => {
+          d.x = Math.max(d.radius + 74, Math.min(width - d.radius - 74, d.x));
+          d.y = Math.max(d.radius + 18, Math.min(height - d.radius - 58, d.y));
+        });
+
+        link
+          .attr('x1', d => d.source.x)
+          .attr('y1', d => d.source.y)
+          .attr('x2', d => d.target.x)
+          .attr('y2', d => d.target.y);
+
+        node.attr('transform', d => `translate(${d.x},${d.y})`);
+      });
+
+    node.call(d3.drag()
+      .on('start', (event, d) => {
+        if (!event.active) simulation.alphaTarget(0.25).restart();
+        d.fx = d.x;
+        d.fy = d.y;
+      })
+      .on('drag', (event, d) => {
+        d.fx = event.x;
+        d.fy = event.y;
+      })
+      .on('end', (event, d) => {
+        if (!event.active) simulation.alphaTarget(0);
+        d.fx = null;
+        d.fy = null;
+      }));
+
+    const zoom = d3.zoom()
+      .scaleExtent([0.7, 2.2])
+      .on('zoom', event => zoomLayer.attr('transform', event.transform));
+
+    svg.call(zoom).on('dblclick.zoom', null);
+
+    const centerScrollableCanvas = () => {
+      if (viewport && viewport.scrollWidth > viewport.clientWidth) {
+        viewport.scrollLeft = (viewport.scrollWidth - viewport.clientWidth) / 2;
+      }
+    };
+    requestAnimationFrame(centerScrollableCanvas);
+
+    if (resetButton) {
+      resetButton.addEventListener('click', () => {
+        svg.transition().duration(350).call(zoom.transform, d3.zoomIdentity);
+        nodes.forEach(d => {
+          d.fx = null;
+          d.fy = null;
+        });
+        simulation.alpha(0.65).restart();
+        clearFocus();
+        centerScrollableCanvas();
+      });
+    }
+  }
+
+  initIdeasGraph();
 
   // Publications: load from locally cached Scholar snapshot (see publications.json)
   const pubStatus = document.getElementById('pub-status');
@@ -1210,7 +1629,7 @@
 
   fetchPublications();
 
-  const sections = ['#top', '#research', '#projects', '#publications', '#contact'];
+  const sections = ['#top', '#ideas', '#publications', '#contact'];
   const navLinks = document.querySelectorAll('.nav-link');
 
   window.addEventListener('scroll', () => {
