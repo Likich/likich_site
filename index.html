@@ -1120,12 +1120,12 @@
   // Publications: load from locally cached Scholar snapshot (see publications.json)
   const pubStatus = document.getElementById('pub-status');
   const pubList = document.getElementById('pub-list');
-  const pubDataUrl = 'publications.json';
+  const pubDataUrl = 'publications.json?v=20260609-1132';
 
   async function fetchPublications() {
     if (!pubStatus || !pubList) return;
     try {
-      const res = await fetch(pubDataUrl);
+      const res = await fetch(pubDataUrl, { cache: 'no-store' });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const papers = await res.json();
 
