@@ -1,5 +1,19 @@
 [
   {
+    "title": "Detecting Persona-Generated AI Text with Interpretable Linguistic Features",
+    "venue": "Companion Publication of the 2026 18th ACM Web Science Conference, 117-123",
+    "year": "2026",
+    "authors": "E Slavova, A Parfenova, J Pfeffer",
+    "href": "https://scholar.google.com/citations?user=nfcKVy4AAAAJ&hl=en"
+  },
+  {
+    "title": "From Quotes to Concepts: Axial Coding of Political Debates with Ensemble LMs",
+    "venue": "ECIR 2026 16484, 139-154",
+    "year": "2026",
+    "authors": "A Parfenova, D Graus, J Pfeffer",
+    "href": "https://scholar.google.com/citations?user=nfcKVy4AAAAJ&hl=en"
+  },
+  {
     "title": "Emergent Convergence in Multi-Agent LLM Annotation",
     "venue": "Proceedings of the 8th BlackboxNLP Workshop: Analyzing and Interpreting …",
     "year": "2025",
